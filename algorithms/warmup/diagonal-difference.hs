@@ -1,4 +1,4 @@
-import Control.Monad(replicateM)
+import Control.Monad (replicateM)
 import Data.List (transpose)
 
 getIntSquareMatrix :: Int -> IO([[Int]])
