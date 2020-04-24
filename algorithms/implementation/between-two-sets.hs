@@ -19,4 +19,4 @@ readIntList =
 main = do [n, m] <- readIntList
           as     <- readIntList
           bs     <- readIntList
-          putStrLn $show $solve as bs
+          putStrLn $ show $ solve as bs

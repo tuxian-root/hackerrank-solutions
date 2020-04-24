@@ -8,4 +8,4 @@ compPoints [at, bt] (a, b)
     | a < b = [at, succ bt]
     | otherwise = [at, bt]
 
-main = interact $ unwords . map  show . foldl compPoints [0, 0] . pair . map read . words
+main = interact $ unwords . map show . foldl compPoints [0, 0] . pair . map read . words
