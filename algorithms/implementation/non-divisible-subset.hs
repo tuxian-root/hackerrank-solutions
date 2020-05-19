@@ -1,3 +1,32 @@
+-- https://www.hackerrank.com/rest/contests/master/challenges/non-divisible-subset/hackers/jhrcek/download_solution
+
+import Control.Arrow
+import Data.List (sort, group)
+
+main :: IO ()
+main = do
+    [_n,k] <- readInts
+    ns     <- readInts
+    let rs = map (head &&& length) . group . sort $ fmap (`mod`k) ns
+    print . sum $ map (pick rs k) [0..div k 2]
+
+pick :: [(Int, Int)] -> Int -> Int -> Int
+pick xs k r = case (lookup r xs,lookup (k-r) xs) of
+    (Just x,  Just y)  -> if r == (k-r) then 1 else max x y
+    (Just x,  Nothing) -> if r == 0     then 1 else x
+    (Nothing, Just y)  -> y
+    (Nothing, Nothing) -> 0
+
+readInts :: IO [Int]
+readInts = fmap (fmap read . words) getLine
+
+--| r -> remainder
+--| k -> divisor
+--| elements in the array are quotient
+
+------------------------------------------------------------------------------------------
+
+{-| Another Approach
 module Main where
 
 import qualified Data.Map as Map
@@ -23,7 +52,8 @@ main = do
         res' = solve 1 (Vec.fromList c) k r
         res = if (even k) && (c !! h > 1) then res' - (c !! h - 1) else res'
     print res
-
+-}
+------------------------------------------------------------------------------------------
 {-| Another Approach
 import Data.Array
 import Data.Maybe
