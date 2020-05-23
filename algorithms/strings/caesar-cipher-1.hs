@@ -1,4 +1,4 @@
-import Data.Char
+import Data.Char (chr, ord, isLower, isUpper)
 
 encrypt :: [String] -> String
 encrypt ( _ : str : [k']) = map (encryptChar k) str
