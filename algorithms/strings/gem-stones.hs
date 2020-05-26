@@ -1,3 +1,3 @@
-import Data.List (intersect)
+import Data.List (intersect, nub)
 
-main = interact $ show . length . foldr1 intersect . tail . words
+main = interact $ show . length . nub . foldr1 intersect . tail . words
